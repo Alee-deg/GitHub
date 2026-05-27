@@ -53,20 +53,28 @@ void Library::displayBooksOnLoan() const{
 }
 
 void Library::displayRegistedBorrower(){
-    if(List.empty()){
-        return; 
-    } 
     for(auto it : List){
         it -> display(); 
     }
 }
 
 void Library::returnOneBook(string aCatalogueNumber) const {
-    for(auto it : stocks){
-        if(it -> getCatalogueNumber() == aCatalogueNumber){
-            it -> display(); 
+    for(auto book : stocks){
+        if(book ->getCatalogueNumber() == aCatalogueNumber){
+            //Book is Available
+            if(book -> isAvailable()){
+                return; 
+            }
+            //Book is lended
+            else{
+                BorrowerRecord* borrower = book -> getBorrower(); 
+                borrower -> detachBook(book); 
+                book -> detachBorrower(); 
+            }
         }
     }
+    //Book is not found
+    cout << "Book is not found" << endl; 
 }
 
 void Library::lendOneBook(string aCatalogueNumber, string aBorrower){

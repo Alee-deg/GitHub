@@ -31,5 +31,6 @@ class Library{
     void lendOneBook(string aCatalogueNumber, string aBorrower); 
     void returnOneBook(string aCatalogueNumber) const; 
     void returnOneBrorrowser(string aBorrowerName); 
+    void returnBook(string idNumber, string aName); 
 }; 
 #endif

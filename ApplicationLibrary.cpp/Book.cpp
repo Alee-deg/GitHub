@@ -26,6 +26,9 @@ string Book::getCatalogueNumber() const{
 string Book::getTitle() const{
     return this -> theTitle; 
 }
+BorrowerRecord* Book::getBorrower() const{
+    return this -> br; 
+}
 bool Book::isAvailable(){
     return br == NULL; 
 }

@@ -19,10 +19,10 @@ class Book{
     string getTitle() const; 
     void setAuthor(string anAuthor);
     string getAuthor() const;
+    BorrowerRecord* getBorrower() const; 
     void attachBorrower(BorrowerRecord *aBorrower); 
     void detachBorrower(); 
     bool isAvailable(); 
     void display(); 
 }; 
-
 #endif
