@@ -1,5 +1,6 @@
 #include "Course.h"
 #include <iostream>
+#include "Section.h"
 
 Course::Course(string courseNo, string courseName, string credits, Course* course){
     this->setCourseName(courseName); 
@@ -24,12 +25,32 @@ void Course::display(){
     cout << "Credits: " << this->getCredits() << "\n";  
 }
 
+void Course::displaySections(){
+    for(auto it : sections){
+        it.second->display(); 
+        cout << std::endl; 
+    }
+}; 
 void Course::addCourses(Course* course){
-    if(this->Prerequisite.find(course->getCourseNo()) == this->Prerequisite.end()){
-        this->Prerequisite.insert({course->getCourseNo(), course}); 
+    if(this->prerequisite.find(course->getCourseNo()) == this->prerequisite.end()){
+        this->prerequisite.insert({course->getCourseNo(), course}); 
         cout << "Done!"; 
     }
     else{
         cout << "Course with " << this->getCourseNo() <<  "is already exists" << std::endl; 
+    }
+}
+void Course::scheduleSection(string codeClass, string date, string time, string classroom, int numberOfStudent){
+    if(this->sections.find(codeClass) == this->sections.end()){
+        Section* newSection = new Section(codeClass, date, time, classroom, numberOfStudent, this); 
+        this->sections.insert({codeClass, newSection}); 
+    }
+    else{
+        cout << "The codeClass is already exists!"; 
+    }
+}
+Course::~Course(){
+    for(auto it : sections){
+        delete it.second; 
     }
 }

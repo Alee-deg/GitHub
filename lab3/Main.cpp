@@ -2,6 +2,7 @@
 #include "Person.h"
 #include "Professor.h"
 #include "Student.h"
+#include "Course.h"
 #include <vector>
 
 using namespace std; 
@@ -13,6 +14,10 @@ int main(){
     vec.push_back(newProfessor); 
     Person* newStudent1 = new Student("SSN1101H2", "Parker", "Biology", "Ungraduated"); 
     vec.push_back(newStudent1); 
+    Course newCourse("24MTH", "Lap trinh", "3");
+    
+    newCourse.scheduleSection("24TTH2", "23-3-2025", "8:00PM", "E203", 100); 
+
     for(auto it : vec){
         it->display(); 
     }
