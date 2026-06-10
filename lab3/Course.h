@@ -8,7 +8,7 @@ class Course{
     string courseNo; 
     string courseName; 
     string credits; 
-    std::unordered_map<string, Course*> Prerequisite; 
+    std::unordered_map<string, Course*> prerequisite; 
     Course* course; 
     public:
     Course(string courseNo, string courseName, string credits, Course* course = nullptr);  

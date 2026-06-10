@@ -22,11 +22,15 @@ void Course::display(){
     cout << "CourseNo: " << this->getCourseNo() << "\n";
     cout << "CourseName: " << this->getCourseName() << "\n"; 
     cout << "Credits: " << this->getCredits() << "\n";  
+    for(auto it : this->prerequisite){
+        cout << "CoursesNo: " << it.first << std::endl;
+        cout << "CoureseName: " << it.second->getCourseName() << std::endl;  
+    }
 }
 
 void Course::addCourses(Course* course){
-    if(this->Prerequisite.find(course->getCourseNo()) == this->Prerequisite.end()){
-        this->Prerequisite.insert({course->getCourseNo(), course}); 
+    if(this->prerequisite.find(course->getCourseNo()) == this->prerequisite.end()){
+        this->prerequisite.insert({course->getCourseNo(), course}); 
         cout << "Done!"; 
     }
     else{
