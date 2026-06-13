@@ -3,6 +3,9 @@
 #include <string>
 #include "Course.h"
 #include <iostream>
+#include <unordered_map>
+
+class Student; 
 using namespace std; 
 class Section{
     private:
@@ -11,6 +14,7 @@ class Section{
     string room; 
     int seatingCapacity;
     Course* course;  
+    unordered_map<string, Student*> students; 
     void setCourse(Course* course); 
     public:
     Section(string sectionNo, string dayOfWeek, string timeOfDay, string room, int seatingCapacity, Course* course = nullptr); 
@@ -27,10 +31,9 @@ class Section{
     int getSeatingCapacity() const;
     Course* getCourse() const;  
     void display(); 
-    void enroll(); 
-    void drop(); 
-    void postGrade(); 
-    void comfirmSeatAvailability(); 
-
+    void enroll(Student *newStudent); 
+    void drop(Student* student); 
+    void postGrade(Student* student, double grade);  
+    bool comfirmSeatAvailability(); 
 }; 
 #endif //SECTION_H
